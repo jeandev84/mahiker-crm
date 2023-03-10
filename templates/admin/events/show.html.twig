@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ event.title }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Наименование</th>
+                <td>{{ event.title }}</td>
+            </tr>
+            <tr>
+                <th>Описание</th>
+                <td>{{ event.description }}</td>
+            </tr>
+            <tr>
+                <th>Дата началого</th>
+                <td>{{ event.startAt ? event.startAt|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Дата конца</th>
+                <td>{{ event.endAt ? event.endAt|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Пользователь</th>
+                <td>
+                    <a href="#">{{ event.getOwner().getFullName() }}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{#    {{ include('admin/events/_delete_form.html.twig') }}#}
+
+{% endblock %}

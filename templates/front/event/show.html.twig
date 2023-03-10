@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5">{{ event.title }}</h1>
+    <div>Автор : <span>{{ event.owner.fullName }}</span></div>
+    <div>{{ event.description }}</div>
+
+{% endblock %}

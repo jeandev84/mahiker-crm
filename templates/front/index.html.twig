@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block body %}
+
+        <h2 class="mt-5 mb-5">Журнал Событий</h2>
+
+        <div class="row">
+
+            {% for event in events %}
+               <div class="col-md-4 mb-3">
+                   <div class="card" style="width: 18rem;">
+                       <div class="card-body">
+                           <h5 class="card-title">
+                               <a href="{{ path('show.event', {'id': event.id }) }}">{{ event.title }}</a>
+                           </h5>
+                           <p class="card-text">
+                               {{ event.description|length > 50 ? event.description|slice(0, 50) ~ '...' : event.description }}
+                           </p>
+
+                           <p>
+                               Автор : <span>{{ event.owner.fullName }}</span>
+                           </p>
+                           <a href="{{ path('show.event', {'id': event.id }) }}" class="btn btn-primary">подробнее</a>
+                       </div>
+                   </div>
+               </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}

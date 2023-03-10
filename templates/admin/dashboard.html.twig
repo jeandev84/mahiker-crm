@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+    <h1 class="mt-3 mb-5">Панель управления</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{ countUsers }}</h2>
+                    <p class="card-text">Пользователи</p>
+                    <a href="{{ path('admin.users.list') }}">перейти</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{ countEvents }}</h2>
+                    <p class="card-text">События</p>
+                    <a href="{{ path('admin.events.list') }}">перейти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Profile | ' ~ user.fullName }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5 mb-3">Ваш профиль</h1>
+
+    <div>
+        <div class="row mb-4">
+            <div class="col-md-4">Ф.И.О</div>
+            <div class="col-md-8">{{ user.fullName }}</div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-4">Электронная почта</div>
+            <div class="col-md-8">{{ user.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">Мои события</div>
+            <div class="col-md-8">
+                <ul>
+                    {% for event in user.events %}
+                        <li>
+                            <a href="{{ path('show.event', {'id': event.id }) }}">{{ event.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
