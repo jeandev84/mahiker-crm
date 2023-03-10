@@ -22,7 +22,16 @@
                            <p>
                                Автор : <span>{{ event.owner.fullName }}</span>
                            </p>
-                           <a href="{{ path('show.event', {'id': event.id }) }}" class="btn btn-primary">подробнее</a>
+
+                           <p>
+                               Начало : <span>{{ event.startAt|date('d-m-Y') }}</span>
+                           </p>
+
+                           <p>
+                               Конец : <span>{{ event.endAt|date('d-m-Y') }}</span>
+                           </p>
+
+                           <a href="{{ path('show.event', {'id': event.id }) }}">подробнее</a>
                        </div>
                    </div>
                </div>
