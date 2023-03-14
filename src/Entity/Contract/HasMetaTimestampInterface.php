@@ -1,7 +1,7 @@
 <?php
 namespace App\Entity\Contract;
 
-interface HasTimestampInterface
+interface HasMetaTimestampInterface
 {
       public function setCreatedAtValue();
       public function setUpdatedAtValue();

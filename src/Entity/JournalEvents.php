@@ -1,17 +1,18 @@
 <?php
 namespace App\Entity;
 
-use App\Entity\Traits\HasTimestamp;
+use App\Entity\Contract\HasMetaTimestampInterface;
+use App\Entity\Traits\HasMetaTimestamp;
 use App\Repository\JournalEventsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: JournalEventsRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class JournalEvents
+class JournalEvents implements HasMetaTimestampInterface
 {
 
-    use HasTimestamp;
+    use HasMetaTimestamp;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -109,7 +110,7 @@ class JournalEvents
     #[ORM\PrePersist]
     public function setCreatedAtValue(): static
     {
-        $this->createdAt = new \DateTimeImmutable();
+        $this->setCreatedAt(new \DateTimeImmutable());
 
         return $this;
     }
@@ -119,7 +120,7 @@ class JournalEvents
     #[ORM\PreUpdate]
     public function setUpdatedAtValue(): static
     {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->setUpdatedAt(new \DateTimeImmutable());
 
         return $this;
     }
